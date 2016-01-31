@@ -10,35 +10,26 @@ import Cocoa
 
 class DeterminateViewController: NSViewController {
 
-    dynamic var liveProgress: Bool = true
     dynamic var labelPercentage: String = "30%"
 
     override func viewDidLoad() {
         preferredContentSize = NSMakeSize(500, 300)
     }
 
-    @IBOutlet weak var slider: NSSlider!
-
     @IBAction func sliderDragged(sender: NSSlider) {
-
-        let event = NSApplication.sharedApplication().currentEvent
-//        let dragStart = event!.type == NSEventType.LeftMouseDown
-        let dragEnd = event!.type == NSEventType.LeftMouseUp
-//        let dragging = event!.type == NSEventType.LeftMouseDragged
-
-        if liveProgress || dragEnd {
-            setProgress(CGFloat(sender.floatValue))
-        }
-        labelPercentage = "\(Int(sender.floatValue * 100))%"
+        self.updateProgress(CGFloat(sender.floatValue))
+        labelPercentage = "\(Int(sender.floatValue))%"
     }
 
-    func setProgress(progress: CGFloat) {
+    func updateProgress(progress: CGFloat) {
         for view in self.view.subviews {
-            if view is DeterminateAnimation {
-                (view as! DeterminateAnimation).progress = progress
+            if view is CircularProgressView {
+                (view as! CircularProgressView).progress = progress
+            }
+            if view is ProgressBar {
+                (view as! ProgressBar).progress = progress
             }
         }
     }
-    
 }
 
