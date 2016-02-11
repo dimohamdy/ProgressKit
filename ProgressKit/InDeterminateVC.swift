@@ -13,6 +13,8 @@ class InDeterminateViewController: NSViewController {
 
     override func viewDidAppear() {
         for view in self.view.subviews {
+            (view as? RotatingArc)?.animate = true
+
             if view is IndeterminateAnimation {
                 (view as! IndeterminateAnimation).animate = true
             }
@@ -21,6 +23,8 @@ class InDeterminateViewController: NSViewController {
 
     override func viewWillDisappear() {
         for view in self.view.subviews {
+            (view as? RotatingArc)?.animate = false
+
             if view is IndeterminateAnimation {
                 (view as! IndeterminateAnimation).animate = false
             }
