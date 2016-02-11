@@ -10,18 +10,36 @@ import Foundation
 import Cocoa
 
 @IBDesignable
-public class Spinner: IndeterminateAnimation {
-    
-    var basicShape = CAShapeLayer()
-    var containerLayer = CAShapeLayer()
-    var starList = [CAShapeLayer]()
-    
-    var animation: CAKeyframeAnimation = {
+public class Spinner: NSView {
+
+    private var basicShape = CAShapeLayer()
+    private var containerLayer = CAShapeLayer()
+    private var starList = [CAShapeLayer]()
+
+    private var animation: CAKeyframeAnimation = {
         var animation = CAKeyframeAnimation(keyPath: "transform.rotation")
         animation.repeatCount = Float.infinity
         animation.calculationMode = kCAAnimationDiscrete
         return animation
         }()
+
+    @IBInspectable public var background: NSColor = NSColor(red: 0.345, green: 0.408, blue: 0.463, alpha: 1.0) {
+        didSet {
+            self.layer?.backgroundColor = background.CGColor
+        }
+    }
+
+    @IBInspectable public var foreground: NSColor = NSColor(red: 0.26, green: 0.677, blue: 0.4156, alpha: 1.0) {
+        didSet {
+            notifyViewRedesigned()
+        }
+    }
+
+    @IBInspectable public var cornerRadius: CGFloat = 5.0 {
+        didSet {
+            containerLayer.cornerRadius = cornerRadius
+        }
+    }
 
     @IBInspectable public var starSize:CGSize = CGSize(width: 6, height: 15) {
         didSet {
@@ -35,7 +53,7 @@ public class Spinner: IndeterminateAnimation {
         }
     }
 
-    
+
     @IBInspectable public var distance: CGFloat = CGFloat(20) {
         didSet {
             notifyViewRedesigned()
@@ -60,18 +78,24 @@ public class Spinner: IndeterminateAnimation {
         }
     }
 
-    override func configureLayers() {
-        super.configureLayers()
+    /// View is hidden when *animate* property is false
+    @IBInspectable public var displayAfterAnimationEnds: Bool = false
 
-        containerLayer.frame = self.bounds
-        containerLayer.cornerRadius = frame.width / 2
-        self.layer?.addSublayer(containerLayer)
-        
-        animation.duration = duration
+    public var animate: Bool = false {
+        didSet {
+            if animate {
+                self.hidden = false
+                startAnimation()
+            } else {
+                if !displayAfterAnimationEnds {
+                    self.hidden = true
+                }
+                stopAnimation()
+            }
+        }
     }
-    
-    override func notifyViewRedesigned() {
-        super.notifyViewRedesigned()
+
+    private func notifyViewRedesigned() {
         starList.removeAll(keepCapacity: true)
         containerLayer.sublayers = nil
         animation.values = [Double]()
@@ -103,11 +127,33 @@ public class Spinner: IndeterminateAnimation {
         }
     }
 
-    override func startAnimation() {
+    override public init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.configureLayers()
+    }
+
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.configureLayers()
+    }
+
+    private func configureLayers() {
+        self.wantsLayer = true
+        self.layer!.backgroundColor = background.CGColor
+        self.layer!.cornerRadius = cornerRadius
+
+        containerLayer.frame = self.bounds
+        containerLayer.cornerRadius = cornerRadius
+        self.layer?.addSublayer(containerLayer)
+
+        animation.duration = duration
+    }
+
+    private func startAnimation() {
         containerLayer.addAnimation(animation, forKey: "rotation")
     }
-    
-    override func stopAnimation() {
+
+    private func stopAnimation() {
         containerLayer.removeAllAnimations()
     }
 }

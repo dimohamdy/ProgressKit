@@ -58,10 +58,10 @@ public class RotatingArc: NSView {
 
     @IBInspectable public var displayAfterAnimationEnds: Bool = false
 
-    var arcLayer = CAShapeLayer()
-    var backgroundCircle = CAShapeLayer()
+    private var arcLayer = CAShapeLayer()
+    private var backgroundCircle = CAShapeLayer()
 
-    var radius: CGFloat {
+    private var radius: CGFloat {
         return (self.frame.width / 2) * CGFloat(0.75)
     }
 
@@ -79,7 +79,7 @@ public class RotatingArc: NSView {
         }
     }
 
-    var rotationAnimation: CABasicAnimation = {
+    private var rotationAnimation: CABasicAnimation = {
         var tempRotation = CABasicAnimation(keyPath: "transform.rotation")
         tempRotation.repeatCount = Float.infinity
         tempRotation.fromValue = 0
@@ -99,7 +99,7 @@ public class RotatingArc: NSView {
         self.configureLayers()
     }
 
-    func configureLayers() {
+    private func configureLayers() {
         self.wantsLayer = true
 
         let rect = self.bounds
@@ -137,11 +137,11 @@ public class RotatingArc: NSView {
         }
     }
 
-    func startAnimation() {
+    private func startAnimation() {
         arcLayer.addAnimation(rotationAnimation, forKey: "")
     }
 
-    func stopAnimation() {
+    private func stopAnimation() {
         arcLayer.removeAllAnimations()
     }
 }
