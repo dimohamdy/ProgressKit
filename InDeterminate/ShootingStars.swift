@@ -18,13 +18,13 @@ public class ShootingStars: NSView {
     private var animation = CABasicAnimation(keyPath: "position.x")
     private var tempAnimation = CABasicAnimation(keyPath: "position.x")
 
-    @IBInspectable public var background: NSColor = NSColor(red: 88.3 / 256, green: 104.4 / 256, blue: 118.5 / 256, alpha: 1.0) {
+    @IBInspectable public var background: NSColor = NSColor(red: 0.345, green: 0.408, blue: 0.463, alpha: 1.0) {
         didSet {
             self.layer?.backgroundColor = background.CGColor
         }
     }
 
-    @IBInspectable public var starColor: NSColor = NSColor(red: 66.3 / 256, green: 173.7 / 256, blue: 106.4 / 256, alpha: 1.0) {
+    @IBInspectable public var starColor: NSColor = NSColor(red: 0.26, green: 0.677, blue: 0.4156, alpha: 1.0) {
         didSet {
             starLayer1.backgroundColor = starColor.CGColor
             starLayer2.backgroundColor = starColor.CGColor

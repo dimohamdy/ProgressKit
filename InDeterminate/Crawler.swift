@@ -9,29 +9,76 @@
 import Foundation
 import Cocoa
 
-private let defaultForegroundColor = NSColor.whiteColor()
-private let defaultBackgroundColor = NSColor(white: 0.0, alpha: 0.4)
-private let duration = 1.2
-
 @IBDesignable
-public class Crawler: IndeterminateAnimation {
-    
-    var starList = [CAShapeLayer]()
+public class Crawler: NSView {
+    private let duration = 1.2
 
-    var smallCircleSize: Double {
+    @IBInspectable public var background: NSColor = NSColor(red: 0.345, green: 0.408, blue: 0.463, alpha: 1.0) {
+        didSet {
+            self.layer?.backgroundColor = background.CGColor
+        }
+    }
+
+    @IBInspectable public var foreground: NSColor = NSColor(red: 0.26, green: 0.677, blue: 0.4156, alpha: 1.0) {
+        didSet {
+            for star in starList {
+                star.backgroundColor = foreground.CGColor
+            }
+        }
+    }
+
+    @IBInspectable public var cornerRadius: CGFloat = 5.0 {
+        didSet {
+            self.layer?.cornerRadius = cornerRadius
+        }
+    }
+    
+
+    /// View is hidden when *animate* property is false
+    @IBInspectable public var displayAfterAnimationEnds: Bool = false
+
+    /**
+     Control point for all Indeterminate animation
+     True invokes `startAnimation()` on subclass of IndeterminateAnimation
+     False invokes `stopAnimation()` on subclass of IndeterminateAnimation
+     */
+    public var animate: Bool = false {
+        didSet {
+            if animate {
+                self.hidden = false
+                startAnimation()
+            } else {
+                if !displayAfterAnimationEnds {
+                    self.hidden = true
+                }
+                stopAnimation()
+            }
+        }
+    }
+
+    private var starList = [CAShapeLayer]()
+
+    private var smallCircleSize: Double {
         return Double(self.bounds.width) * 0.2
     }
 
-    var animationGroups = [CAAnimation]()
+    private var animationGroups = [CAAnimation]()
 
-    override func notifyViewRedesigned() {
-        super.notifyViewRedesigned()
-        for star in starList {
-            star.backgroundColor = foreground.CGColor
-        }
+    override public init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.configureLayers()
     }
-    override func configureLayers() {
-        super.configureLayers()
+
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.configureLayers()
+    }
+
+    private func configureLayers() {
+        self.wantsLayer = true
+        self.layer?.backgroundColor = background.CGColor
+        self.layer?.cornerRadius = cornerRadius
+
         let rect = self.bounds
         let insetRect = NSInsetRect(rect, rect.width * 0.15, rect.width * 0.15)
 
@@ -64,13 +111,13 @@ public class Crawler: IndeterminateAnimation {
         }
     }
 
-    override func startAnimation() {
+    private func startAnimation() {
         for (index, star) in starList.enumerate() {
             star.addAnimation(animationGroups[index], forKey: "")
         }
     }
 
-    override func stopAnimation() {
+    private func stopAnimation() {
         for star in starList {
             star.removeAllAnimations()
         }

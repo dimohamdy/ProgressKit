@@ -16,10 +16,9 @@ class InDeterminateViewController: NSViewController {
             (view as? RotatingArc)?.animate = true
             (view as? Spinner)?.animate = true
             (view as? ShootingStars)?.animate = true
-
-            if view is IndeterminateAnimation {
-                (view as! IndeterminateAnimation).animate = true
-            }
+            (view as? Crawler)?.animate = true
+            (view as? Rainbow)?.animate = true
+            (view as? CircularSnail)?.animate = true
         }
     }
 
@@ -28,10 +27,9 @@ class InDeterminateViewController: NSViewController {
             (view as? RotatingArc)?.animate = false
             (view as? Spinner)?.animate = false
             (view as? ShootingStars)?.animate = false
-
-            if view is IndeterminateAnimation {
-                (view as! IndeterminateAnimation).animate = false
-            }
+            (view as? Crawler)?.animate = false
+            (view as? Rainbow)?.animate = false
+            (view as? CircularSnail)?.animate = false
         }
     }
 }
