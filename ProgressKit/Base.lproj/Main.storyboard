@@ -735,34 +735,6 @@
                                     <segue destination="iQ1-7I-gIf" kind="popover" popoverAnchorView="Npu-8G-HkC" popoverBehavior="t" preferredEdge="maxY" id="cHP-vz-pJQ"/>
                                 </connections>
                             </button>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kmB-H3-AT2" customClass="ShootingStars" customModule="ProgressKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="34" width="438" height="3"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="foreground">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NfH-n9-vtu" customClass="ShootingStars" customModule="ProgressKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="11" width="438" height="3"/>
-                                <shadow key="shadow" blurRadius="1">
-                                    <color key="color" red="0.25490197539329529" green="0.63529413938522339" blue="0.87058824300765991" alpha="1" colorSpace="calibratedRGB"/>
-                                </shadow>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="foreground">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
-                                        <color key="value" red="0.25490197539329529" green="0.63529413938522339" blue="0.87058824300765991" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q8N-1B-PXN">
                                 <rect key="frame" x="289" y="59" width="41" height="17"/>
                                 <buttonCell key="cell" type="inline" title="More" bezelStyle="inline" alignment="center" controlSize="small" borderStyle="border" inset="2" id="Z8O-Rd-zkL">
@@ -785,6 +757,20 @@
                             </button>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frt-eD-INi" customClass="RotatingArc" customModule="ProgressKit" customModuleProvider="target">
                                 <rect key="frame" x="378" y="84" width="80" height="80"/>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7L-nj-rgs" customClass="ShootingStars" customModule="ProgressKit" customModuleProvider="target">
+                                <rect key="frame" x="20" y="30" width="438" height="4"/>
+                            </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GbQ-54-tBH" customClass="ShootingStars" customModule="ProgressKit" customModuleProvider="target">
+                                <rect key="frame" x="20" y="13" width="438" height="4"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="0.25490197539999998" green="0.63529413940000001" blue="0.87058824300000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="starColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </customView>
                         </subviews>
                     </view>

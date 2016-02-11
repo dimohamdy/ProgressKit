@@ -15,6 +15,7 @@ class InDeterminateViewController: NSViewController {
         for view in self.view.subviews {
             (view as? RotatingArc)?.animate = true
             (view as? Spinner)?.animate = true
+            (view as? ShootingStars)?.animate = true
 
             if view is IndeterminateAnimation {
                 (view as! IndeterminateAnimation).animate = true
@@ -26,6 +27,7 @@ class InDeterminateViewController: NSViewController {
         for view in self.view.subviews {
             (view as? RotatingArc)?.animate = false
             (view as? Spinner)?.animate = false
+            (view as? ShootingStars)?.animate = false
 
             if view is IndeterminateAnimation {
                 (view as! IndeterminateAnimation).animate = false

@@ -10,39 +10,74 @@ import Foundation
 import Cocoa
 
 @IBDesignable
-public class ShootingStars: IndeterminateAnimation {
+public class ShootingStars: NSView {
     private let animationDuration = 1.0
 
-    var starLayer1 = CAShapeLayer()
-    var starLayer2 = CAShapeLayer()
-    var animation = CABasicAnimation(keyPath: "position.x")
-    var tempAnimation = CABasicAnimation(keyPath: "position.x")
+    private var starLayer1 = CAShapeLayer()
+    private var starLayer2 = CAShapeLayer()
+    private var animation = CABasicAnimation(keyPath: "position.x")
+    private var tempAnimation = CABasicAnimation(keyPath: "position.x")
 
-    override func notifyViewRedesigned() {
-        super.notifyViewRedesigned()
-        starLayer1.backgroundColor = foreground.CGColor
-        starLayer2.backgroundColor = foreground.CGColor
+    @IBInspectable public var background: NSColor = NSColor(red: 88.3 / 256, green: 104.4 / 256, blue: 118.5 / 256, alpha: 1.0) {
+        didSet {
+            self.layer?.backgroundColor = background.CGColor
+        }
     }
 
-    override func configureLayers() {
-        super.configureLayers()
+    @IBInspectable public var starColor: NSColor = NSColor(red: 66.3 / 256, green: 173.7 / 256, blue: 106.4 / 256, alpha: 1.0) {
+        didSet {
+            starLayer1.backgroundColor = starColor.CGColor
+            starLayer2.backgroundColor = starColor.CGColor
+        }
+    }
+
+    /// View is hidden when *animate* property is false
+    @IBInspectable public var displayAfterAnimationEnds: Bool = false
+
+    public var animate: Bool = false {
+        didSet {
+            if animate {
+                self.hidden = false
+                startAnimation()
+            } else {
+                if !displayAfterAnimationEnds {
+                    self.hidden = true
+                }
+                stopAnimation()
+            }
+        }
+    }
+
+    override public init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+        self.configureLayers()
+    }
+
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.configureLayers()
+    }
+
+    private func configureLayers() {
+        self.wantsLayer = true
+        
+        self.layer!.backgroundColor = background.CGColor
+        self.layer!.cornerRadius = 0
 
         let rect = self.bounds
         let dimension = rect.height
         let starWidth = dimension * 1.5
-        
-        self.layer?.cornerRadius = 0
 
         /// Add Stars
         do {
             starLayer1.position = CGPoint(x: dimension / 2, y: dimension / 2)
             starLayer1.bounds.size = CGSize(width: starWidth, height: dimension)
-            starLayer1.backgroundColor = foreground.CGColor
+            starLayer1.backgroundColor = starColor.CGColor
             self.layer?.addSublayer(starLayer1)
             
             starLayer2.position = CGPoint(x: rect.midX, y: dimension / 2)
             starLayer2.bounds.size = CGSize(width: starWidth, height: dimension)
-            starLayer2.backgroundColor = foreground.CGColor
+            starLayer2.backgroundColor = starColor.CGColor
             self.layer?.addSublayer(starLayer2)
         }
         
@@ -71,13 +106,12 @@ public class ShootingStars: IndeterminateAnimation {
         starLayer2.addAnimation(animation, forKey: "default")
     }
     
-    //MARK: Indeterminable protocol
-    override func startAnimation() {
+    private func startAnimation() {
         starLayer1.addAnimation(animation, forKey: "default")
         starLayer2.addAnimation(tempAnimation, forKey: "tempAnimation")
     }
     
-    override func stopAnimation() {
+    private func stopAnimation() {
         starLayer1.removeAllAnimations()
         starLayer2.removeAllAnimations()
     }

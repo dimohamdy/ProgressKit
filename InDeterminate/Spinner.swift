@@ -37,7 +37,7 @@ public class Spinner: NSView {
 
     @IBInspectable public var cornerRadius: CGFloat = 5.0 {
         didSet {
-            containerLayer.cornerRadius = cornerRadius
+            self.layer?.cornerRadius = cornerRadius
         }
     }
 
@@ -139,8 +139,8 @@ public class Spinner: NSView {
 
     private func configureLayers() {
         self.wantsLayer = true
-        self.layer!.backgroundColor = background.CGColor
-        self.layer!.cornerRadius = cornerRadius
+        self.layer?.backgroundColor = background.CGColor
+        self.layer?.cornerRadius = cornerRadius
 
         containerLayer.frame = self.bounds
         containerLayer.cornerRadius = cornerRadius
