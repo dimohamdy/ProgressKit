@@ -67,6 +67,9 @@ public class RotatingArc: NSView {
 
     public var animate: Bool = false {
         didSet {
+            guard animate != oldValue else {
+                return
+            }
             if animate {
                 self.hidden = false
                 startAnimation()
