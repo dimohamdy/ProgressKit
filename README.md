@@ -56,7 +56,7 @@ $ pod install
 - For `Indeterminate` Progress Views
   - Set `true / false` to `view.animate`
 - For `Determinate` Progress Views:
-  - Set `view.progress` to value in `0...1`
+  - Set `view.progress` to value in `0...100`
   
 
 # Indeterminate Progress
