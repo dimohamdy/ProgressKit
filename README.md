@@ -26,6 +26,11 @@ You can now make spinners, progress bar, crawlers etc, which can be finely custo
 - [License](#license)
 
 # Installation
+##Direct
+You can directly drag the Class file to your project.
+
+If you need one or two animations, it is recommended that you drag only the file that is required, instead of using entire ProgressKit framework.
+
 ##CocoaPods
 [CocoaPods](http://cocoapods.org) adds supports for Swift and embedded frameworks.
 

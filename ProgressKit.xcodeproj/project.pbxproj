@@ -10,6 +10,7 @@
 		E340FDB81BDE45F000CE6550 /* RotatingArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340FDB71BDE45F000CE6550 /* RotatingArc.swift */; };
 		E35D1C6C1B676889001DBAF2 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35D1C6B1B676889001DBAF2 /* Spinner.swift */; };
 		E37568DF1B6AAB530073E26F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37568DE1B6AAB530073E26F /* ProgressBar.swift */; };
+		E38D14C71C6DFCC800A561D2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E38D14C61C6DFCC800A561D2 /* README.md */; };
 		E3918F811B4E88CF00558DAB /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3918F801B4E88CF00558DAB /* CircularProgressView.swift */; };
 		E3918F841B4E88DE00558DAB /* CircularSnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3918F821B4E88DE00558DAB /* CircularSnail.swift */; };
 		E3918F851B4E88DE00558DAB /* ShootingStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3918F831B4E88DE00558DAB /* ShootingStars.swift */; };
@@ -37,6 +38,7 @@
 		E340FDB71BDE45F000CE6550 /* RotatingArc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RotatingArc.swift; path = InDeterminate/RotatingArc.swift; sourceTree = "<group>"; };
 		E35D1C6B1B676889001DBAF2 /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Spinner.swift; path = InDeterminate/Spinner.swift; sourceTree = "<group>"; };
 		E37568DE1B6AAB530073E26F /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressBar.swift; path = Determinate/ProgressBar.swift; sourceTree = "<group>"; };
+		E38D14C61C6DFCC800A561D2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E3918F801B4E88CF00558DAB /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircularProgressView.swift; path = Determinate/CircularProgressView.swift; sourceTree = "<group>"; };
 		E3918F821B4E88DE00558DAB /* CircularSnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircularSnail.swift; path = InDeterminate/CircularSnail.swift; sourceTree = "<group>"; };
 		E3918F831B4E88DE00558DAB /* ShootingStars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShootingStars.swift; path = InDeterminate/ShootingStars.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				E3CCD5991BBC2B9B00F7DB9A /* ProgressUtils.swift */,
 				E3CCD5971BBC19ED00F7DB9A /* ProgressKit.podspec */,
 				E3AD65D61B426758009541CD /* Info.plist */,
+				E38D14C61C6DFCC800A561D2 /* README.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				E3918F851B4E88DE00558DAB /* ShootingStars.swift in Sources */,
 				E3918F811B4E88CF00558DAB /* CircularProgressView.swift in Sources */,
 				E35D1C6C1B676889001DBAF2 /* Spinner.swift in Sources */,
+				E38D14C71C6DFCC800A561D2 /* README.md in Sources */,
 				E3918F841B4E88DE00558DAB /* CircularSnail.swift in Sources */,
 				E3AD65D81B426758009541CD /* AppDelegate.swift in Sources */,
 				E37568DF1B6AAB530073E26F /* ProgressBar.swift in Sources */,
